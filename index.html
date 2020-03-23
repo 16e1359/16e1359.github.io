@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>ArcheryLeagueMatchRec</title>
+
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/uikit.min.js"></script>
+
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="storage.js"></script>
+
+  </head>
+  <body  onLoad=today()>
+
+    <br>
+    <input type="button" class="uk-button uk-button-primary"  value="自動保存から読み込み" onclick="asload();">
+    <input type="button" class="uk-button uk-button-secondary" value="赤点表示" onclick="red();">
+    <input type="button" class="uk-button uk-button-secondary"  value="赤点表示無効" onclick="RestRed();">
+    <input type="button" class="uk-button uk-button-primary"  value="デバイスから読み込み" onclick="load();">
+    <input type="button" class="uk-button uk-button-primary"  value="デバイスに保存" onclick="save();">
+    <input type="button" class="uk-button uk-button-danger"  value="保存内容削除" onclick="del();">
+    <br>
+    <br>
+
+    <form action="#" id="ArcheryRec" name="ArcheryRec">
+
+      <table class="uk-table uk-table-striped uk-table-small uk-table-middle uk-table-shrink">
+
+        <input class="uk-input uk-width-large" type="text" autofocus maxlength="25" placeholder="タイトル"name="name_12">
+        <input class="uk-input uk-width-large" type="text" maxlength="25" placeholder="学校"name="grade_12">
+      	<input class="uk-input uk-form-width-small	" type="text" maxlength="11" placeholder="Today" name="name_13">
+        <input class="uk-input uk-form-width-small" type="text" maxlength="5" placeholder="天気"name="grade_13">
+
+        <tr>
+          <th></th> <th><b>立</b></th> <th><b>名前<b></th> <th><b>学年<b></th> <th><b>距離<b></th>
+          <th><b>１</b></th> <th><b>2</b></th> <th><b>3</b></th> <th><b>4</b></th> <th><b>5</b></th> <th><b>6</b></th>
+          <th><b>小計</b></th> <th><b>総合</b></th>
+        </tr>
+
+        <tr>
+          <td rowspan="27"></td>
+          <td rowspan="2" style="font-weight: bold">1</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_1" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_1" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_1" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_1_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_1_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_1_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_1_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_1_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_1_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_1" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_1" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_2" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_2_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_2_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_2_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_2_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_2_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_2_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_2" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">2</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_2" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_2" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_3" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_3_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_3_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_3_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_3_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_3_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_3_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_3" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_2" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_4" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_4_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_4_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_4_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_4_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_4_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_4_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_4" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">3</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_3" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_3" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_5" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_5_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_5_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_5_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_5_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_5_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_5_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_5" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_3" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_6" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_6_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_6_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_6_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_6_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_6_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_6_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_6" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">4</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_4" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_4" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_7" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_7_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)"  onkeyup="nextfeild(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_7_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_7_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_7_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_7_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_7_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_7" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_4" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_8" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_8_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_8_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_8_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_8_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_8_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_8_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_8" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">5</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_5" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_5" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_9" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_9_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_9_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_9_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_9_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_9_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_9_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_9" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_5" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_10" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_10_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_10_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_10_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_10_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_10_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_10_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_10" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">6</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_6" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_6" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_11" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_11_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_11_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_11_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_11_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_11_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_11_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_11" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_6" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_12" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_12_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_12_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_12_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_12_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_12_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_12_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_12" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">7</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_7" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_7" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_13" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_13_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_13_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_13_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_13_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_13_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_13_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_13" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_7" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_14" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_14_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_14_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_14_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_14_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_14_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_14_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_14" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">8</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_8" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_8" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_15" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_15_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_15_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_15_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_15_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_15_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_15_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)"></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_15" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_8" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_16" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_16_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_16_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_16_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_16_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_16_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_16_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_16" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">9</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_9" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_9" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_17" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_17_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_17_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_17_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_17_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_17_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_17_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_17" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_9" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_18" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_18_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_18_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_18_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_18_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_18_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_18_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_18" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">10</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_10" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_10" value="" onchange="asave()" onkeyup="nextplayer(this)"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_19" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_19_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_19_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_19_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_19_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_19_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_19_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_19" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_10" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_20" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_20_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_20_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_20_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_20_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_20_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_20_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextfeild(this)" ></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_20" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="font-weight: bold">11</td>
+          <td rowspan="2"><input type="text" size="20" maxlength="20" name="name_11" value="" onchange="asave()"></td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="1" name="grade_11" value="" onchange="asave()"></td>
+          <td><input type="tel" size="2" maxlength="2" name="range_21" value="50"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_21_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_21_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_21_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_21_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_21_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_21_6" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextm(this)"></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_21" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="3" maxlength="3" name="total_11" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="2" maxlength="2" name="range_22" value="30"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_22_1" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_22_2" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_22_3" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_22_4" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_22_5" value="" style="font-weight: bold" onchange="calc()" onkeyup="nextr(this)"></td>
+          <td><input type="tel" size="3" maxlength="2" name="r_22_6" value="" style="font-weight: bold" onchange="calc()"></td>
+          <td><input type="tel" size="3" maxlength="3" name="subtotal_22" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="4"></td>
+          <td rowspan="4" colspan="2" style="font-weight: bold">学校総合点</td>
+          <td rowspan="2"><input type="tel" size="2" maxlength="2" name="range_t_1" value="50"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_1_1" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_1_2" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_1_3" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_1_4" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_1_5" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_1_6" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="4" maxlength="4" name="ssubtotal_1" value="" style="font-weight: bold"></td>
+          <td rowspan="4"><input type="tel" size="4" maxlength="4" name="stotal" value="" style="font-weight: bold"></td>
+        </tr>
+        <tr>
+          <td><input type="tel" size="4" maxlength="4" name="srt_1_1" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="srt_1_2" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="srt_1_3" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="srt_1_4" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="srt_1_5" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="srt_1_6" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2"><input type="tel" size="2" maxlength="2" name="range_t_2" value="30"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_2_1" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_2_2" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_2_3" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_2_4" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_2_5" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="4" name="sr_2_6" value="" style="font-weight: bold"></td>
+          <td rowspan="2"><input type="tel" size="4" maxlength="3" name="ssubtotal_2" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td><input type="tel" size="4" maxlength="2" name="srt_2_1" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="2" name="srt_2_2" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="2" name="srt_2_3" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="2" name="srt_2_4" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="2" name="srt_2_5" value="" style="font-weight: bold"></td>
+          <td><input type="tel" size="4" maxlength="2" name="srt_2_6" value="" style="font-weight: bold"></td>
+        </tr>
+
+        <tr>
+          <td colspan="12"><textarea class="uk-textarea" cols="145" rows="4" placeholder="メモ" id="memo"></textarea></td>
+        </tr>
+
+      </tabele>
+
+    </form>
+  </body>
+</html>
