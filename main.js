@@ -288,6 +288,6 @@ function nextm(str) {
 //日付表示
 function today(){
 var today = new Date();
-var Today = (today.getFullYear() + "/" +  (today.getMonth() + 1) + "/"+ today.getDate());
+var Today = (today.getFullYear() + "/" +  (today.getMonth() + 1) + "/" + today.getDate());
 document.ArcheryRec["name_13"].value = Today;
 }
