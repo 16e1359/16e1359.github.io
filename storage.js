@@ -119,7 +119,7 @@ function asave(){
 
 //自動保存読み込み
 function asload(){
-  var result = window.confirm("入力可能箇所のいずれかが変更された時点で保存しています。　　　　　　　記録が上書きされますがよろしいでしょうか。")
+  var result = window.confirm("入力可能箇所のいずれかが変更された時点で保存しています。記録が上書きされますがよろしいでしょうか。")
   if(result){
     var scoredate = JSON.parse(window.localStorage.getItem("AutoArcheryS_key"));
     var namedate = JSON.parse(window.localStorage.getItem("AutoArcheryN_key"));
